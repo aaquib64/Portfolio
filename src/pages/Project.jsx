@@ -42,7 +42,8 @@ export default function Projects() {
     {
       title: "EasyPans Recipe App",
       desc: "Users can upload, search, and save recipes with a clean UI and fast performance.",
-      live: "https://www.easypans.com/",
+      live: "https://easypans.netlify.app/",
+      github: "https://github.com/aaquib64/EasyPans",
     },
   ];
 

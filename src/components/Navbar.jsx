@@ -30,7 +30,6 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-
           {/* Mobile Menu Button */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <DisclosureButton className="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-gray-800 hover:text-white transition">
@@ -60,7 +59,7 @@ export default function Navbar() {
                   "relative px-3 py-2 text-sm font-medium transition duration-300 group",
                   isActive(item.href)
                     ? "text-white"
-                    : "text-gray-300 hover:text-white"
+                    : "text-gray-300 hover:text-white",
                 )}
               >
                 {item.name}
@@ -69,9 +68,7 @@ export default function Navbar() {
                 <span
                   className={classNames(
                     "absolute left-0 -bottom-1 h-[2px] bg-indigo-500 transition-all duration-300",
-                    isActive(item.href)
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
+                    isActive(item.href) ? "w-full" : "w-0 group-hover:w-full",
                   )}
                 ></span>
               </Link>
@@ -92,7 +89,7 @@ export default function Navbar() {
                 "block rounded-md px-3 py-2 text-base font-medium transition",
                 isActive(item.href)
                   ? "bg-indigo-600 text-white"
-                  : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                  : "text-gray-300 hover:bg-gray-800 hover:text-white",
               )}
             >
               {item.name}
