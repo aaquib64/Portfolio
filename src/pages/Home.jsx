@@ -66,12 +66,12 @@ export default function Home() {
           variants={stagger}
           initial="hidden"
           animate="show"
-          className="relative z-10 max-w-5xl mx-auto text-center"
+          className="relative z-10 max-w-5xl mx-auto text-center pt-20"
         >
           {/* Badge */}
           <motion.span
             variants={fadeUp}
-            className="inline-block mb-6 px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 backdrop-blur pt-20"
+            className="inline-block mb-6 px-6 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 backdrop-blur "
           >
             Full Stack Web Developer
           </motion.span>
