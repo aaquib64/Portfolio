@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import resume from "../assets/resume.pdf";
+import resume from "../assets/Aaquib-Shaikh-Resume.pdf";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },

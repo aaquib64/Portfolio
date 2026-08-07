@@ -28,6 +28,12 @@ export default function Projects() {
       github: "https://github.com/aaquib64/TrendiFy_Client",
     },
     {
+      title: "EasyPans Recipe App",
+      desc: "Users can upload, search, and save recipes with a clean UI and fast performance.",
+      live: "https://easypans.netlify.app/",
+      github: "https://github.com/aaquib64/EasyPans",
+    },
+    {
       title: "Inventory Management System",
       desc: "A MERN-based inventory management solution with CRUD operations and real-time updates.",
       live: "https://inventosystem.netlify.app/",
@@ -38,12 +44,6 @@ export default function Projects() {
       desc: "PocketPilot – Track income, expenses, and analyze spending with interactive dashboards.",
       live: "https://pocketpilot-app.netlify.app/",
       github: "https://github.com/aaquib64/PocketPilot_Client",
-    },
-    {
-      title: "EasyPans Recipe App",
-      desc: "Users can upload, search, and save recipes with a clean UI and fast performance.",
-      live: "https://easypans.netlify.app/",
-      github: "https://github.com/aaquib64/EasyPans",
     },
   ];
 

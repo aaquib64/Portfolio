@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import resume from "../assets/resume.pdf";
+import resume from "../assets/Aaquib-Shaikh-Resume.pdf";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import { SiExpress, SiMongodb, SiTailwindcss } from "react-icons/si";
 
@@ -32,6 +32,16 @@ export default function Home() {
   ];
 
   const experience = [
+    {
+      role: "Technical Support Executive",
+      company: "Softmate Systems, Pune",
+      duration: "Feb 2026 – Present",
+      points: [
+        "Provided technical support and troubleshooting for the SUP & ZPBDMS government web applications, resolving user and system issues",
+        "Collaborated with the development team to report bugs, validate fixes, and manage user accounts, workflows, and system configurations.",
+        "Conducted software demonstrations, trained government officials, and maintained technical documentation and support records",
+      ],
+    },
     {
       role: "Software Developer Intern",
       company: "EasyPans, Mumbai",
