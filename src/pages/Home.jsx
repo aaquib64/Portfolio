@@ -93,9 +93,11 @@ export default function Home() {
           >
             Building{" "}
             <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-              modern web experiences
+              Modern Web Applications
             </span>
           </motion.h1>
+          
+
 
           {/* Subtitle */}
           <motion.p
@@ -156,6 +158,7 @@ export default function Home() {
               Download Resume
             </a>
           </motion.div>
+          
 
           {/* Stats */}
           <motion.div
@@ -182,47 +185,93 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ================= EXPERIENCE SECTION ================= */}
-      <section className="bg-slate-950 text-white py-10 px-6">
+      {/* ================= EXPERIENCE TIMELINE ================= */}
+      <section className="bg-slate-950 text-white py-20 px-6">
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
-          className="max-w-6xl mx-auto"
+          viewport={{ once: true, amount: 0.15 }}
+          className="max-w-4xl mx-auto"
         >
-          {/* Heading */}
-          <motion.div variants={fadeUp} className="text-center mb-10">
-            <motion.h2 variants={fadeUp} className="text-4xl font-bold mb-4">
+          {/* Section Heading */}
+          <motion.div variants={fadeUp} className="text-center mb-16">
+            <span className="text-indigo-400 text-sm font-semibold uppercase tracking-[0.25em]">
+              Career Journey
+            </span>
+
+            <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4">
               Experience
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-400">
-              My professional journey and hands-on experience
-            </motion.p>
+            </h2>
+
+            <p className="text-gray-400 max-w-xl mx-auto">
+              My professional journey, from web development to application
+              support and software development.
+            </p>
           </motion.div>
 
-          {/* Cards */}
-          <motion.div variants={stagger} className="grid md:grid-cols-2 gap-8">
-            {experience.map((exp, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur hover:border-indigo-500 transition duration-300"
-              >
-                <h3 className="text-xl font-semibold text-indigo-400">
-                  {exp.role}
-                </h3>
-                <p className="text-gray-300">{exp.company}</p>
-                <p className="text-sm text-gray-400 mb-4">{exp.duration}</p>
+          {/* Timeline */}
+          <div className="relative">
+            <div className="absolute left-[7px] md:left-[128px] top-2 bottom-2 w-px bg-gradient-to-b from-indigo-500 via-indigo-500/50 to-transparent" />
 
-                <ul className="text-sm text-gray-300 space-y-2">
-                  {exp.points.map((point, idx) => (
-                    <li key={idx}>• {point}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+            <div className="space-y-12">
+              {experience.map((exp) => (
+                <motion.div
+                  key={`${exp.company}-${exp.role}`}
+                  variants={fadeUp}
+                  className="relative grid grid-cols-[16px_minmax(0,1fr)] md:grid-cols-[120px_minmax(0,1fr)] gap-x-5 md:gap-x-8"
+                >
+                  {/* Desktop Date */}
+                  <div className="hidden md:block pt-1 text-right">
+                    <span className="text-xs leading-relaxed text-gray-400">
+                      {exp.duration}
+                    </span>
+                  </div>
+
+                  {/* Timeline Marker */}
+                  <div className="absolute left-0 md:left-[122px] top-1.5 z-10">
+                    <div className="h-[14px] w-[14px] rounded-full border-[3px] border-slate-950 bg-indigo-400 ring-4 ring-indigo-500/10" />
+                  </div>
+
+                  {/* Experience Details */}
+                  <div className="col-start-2 min-w-0 rounded-xl border border-white/10 bg-white/[0.03] p-5 md:p-6 transition-colors duration-300 hover:border-indigo-400/40 hover:bg-white/[0.05]">
+                    <p className="mb-3 text-xs text-indigo-300 md:hidden">
+                      {exp.duration}
+                    </p>
+
+                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                      {exp.role}
+                    </h3>
+
+                    <p className="mt-1 text-sm font-medium text-indigo-400">
+                      {exp.company}
+                    </p>
+
+                    <ul className="mt-4 space-y-3">
+                      {exp.points.map((point, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-3 text-sm leading-6 text-gray-400"
+                        >
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Link */}
+          <motion.div variants={fadeUp} className="text-center mt-12">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+            >
+              More About Me <span aria-hidden="true">→</span>
+            </Link>
           </motion.div>
         </motion.div>
       </section>

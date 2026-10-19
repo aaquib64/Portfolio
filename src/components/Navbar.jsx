@@ -26,77 +26,94 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className="bg-gray-900/70 backdrop-blur-md fixed w-full z-50 border-b border-white/10 shadow-lg"
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gray-950/85 shadow-lg shadow-black/10 backdrop-blur-xl"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
-          {/* Mobile Menu Button */}
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <DisclosureButton className="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-gray-800 hover:text-white transition">
-              <Bars3Icon className="block h-6 w-6 data-[open]:hidden" />
-              <XMarkIcon className="hidden h-6 w-6 data-[open]:block" />
-            </DisclosureButton>
-          </div>
-
-          {/* Logo */}
-          <div className="flex items-center absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
-            <Link
-              to="/"
-              className="relative text-xl font-semibold text-white group"
-            >
-              Aaquib <span className="text-indigo-500">Shaikh</span>
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden sm:flex ml-auto items-center space-x-6">
-            {navigation.map((item) => (
+      {({ close }) => (
+        <>
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+            <div className="flex h-[72px] items-center justify-between">
+              {/* Logo */}
               <Link
-                key={item.name}
-                to={item.href}
-                className={classNames(
-                  "relative px-3 py-2 text-sm font-medium transition duration-300 group",
-                  isActive(item.href)
-                    ? "text-white"
-                    : "text-gray-300 hover:text-white",
-                )}
+                to="/"
+                onClick={close}
+                aria-label="Aaquib Shaikh - Home"
+                className="group relative shrink-0 text-xl font-bold tracking-tight text-white sm:text-2xl"
               >
-                {item.name}
-
-                {/* Underline Animation */}
-                <span
-                  className={classNames(
-                    "absolute left-0 -bottom-1 h-[2px] bg-indigo-500 transition-all duration-300",
-                    isActive(item.href) ? "w-full" : "w-0 group-hover:w-full",
-                  )}
-                ></span>
+                Aaquib
+                <span className="text-indigo-400"> Shaikh</span>
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 rounded-full bg-indigo-400 transition-all duration-300 group-hover:w-full" />
               </Link>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <DisclosurePanel className="sm:hidden bg-gray-900/95 backdrop-blur-md">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          {navigation.map((item) => (
-            <DisclosureButton
-              key={item.name}
-              as={Link}
-              to={item.href}
-              className={classNames(
-                "block rounded-md px-3 py-2 text-base font-medium transition",
-                isActive(item.href)
-                  ? "bg-indigo-600 text-white"
-                  : "text-gray-300 hover:bg-gray-800 hover:text-white",
-              )}
-            >
-              {item.name}
-            </DisclosureButton>
-          ))}
-        </div>
-      </DisclosurePanel>
+              {/* Desktop Navigation */}
+              <div className="hidden items-center gap-2 sm:flex">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={classNames(
+                      "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200 lg:px-4",
+                      isActive(item.href)
+                        ? "text-indigo-300"
+                        : "text-gray-400 hover:text-white",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400",
+                    )}
+                  >
+                    {item.name}
+
+                    <span
+                      className={classNames(
+                        "absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-indigo-400 transition-transform duration-300 lg:left-4 lg:right-4",
+                        isActive(item.href) ? "scale-x-100" : "scale-x-0",
+                      )}
+                    />
+                  </Link>
+                ))}
+              </div>
+
+              {/* Mobile Menu Button */}
+              <div className="sm:hidden">
+                <DisclosureButton
+                  aria-label="Toggle navigation menu"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-300 transition hover:border-indigo-400/40 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                >
+                  {({ open }) =>
+                    open ? (
+                      <XMarkIcon className="h-5 w-5" />
+                    ) : (
+                      <Bars3Icon className="h-5 w-5" />
+                    )
+                  }
+                </DisclosureButton>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          <DisclosurePanel className="border-t border-white/10 bg-gray-950/95 sm:hidden">
+            <div className="mx-auto max-w-7xl space-y-1 px-5 py-4">
+              {navigation.map((item) => (
+                <DisclosureButton
+                  key={item.name}
+                  as={Link}
+                  to={item.href}
+                  onClick={close}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={classNames(
+                    "block rounded-xl px-4 py-3 text-sm font-medium transition-colors duration-200",
+                    isActive(item.href)
+                      ? "border border-indigo-400/20 bg-indigo-500/10 text-indigo-300"
+                      : "text-gray-300 hover:bg-white/5 hover:text-white",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400",
+                  )}
+                >
+                  {item.name}
+                </DisclosureButton>
+              ))}
+            </div>
+          </DisclosurePanel>
+        </>
+      )}
     </Disclosure>
   );
 }
